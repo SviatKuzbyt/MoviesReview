@@ -2,6 +2,7 @@ package com.example.moviesreview.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.moviesreview.R
@@ -15,6 +16,12 @@ class MainActivity : AppCompatActivity() {
         val mainBottomNavigation = findViewById<BottomNavigationView>(R.id.mainBottomNavigation)
         val navController = findNavController(R.id.mainFrameLayout)
         mainBottomNavigation.setupWithNavController(navController)
+        Log.v("imageID", R.drawable.poster0.toString() )
+        Log.v("imageID", R.drawable.poster1.toString() )
+        Log.v("imageID", R.drawable.poster2.toString() )
+        Log.v("imageID", R.drawable.poster3.toString() )
+        Log.v("imageID", R.drawable.poster4.toString() )
+
     }
 }
 
