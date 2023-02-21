@@ -3,7 +3,7 @@ package com.example.moviesreview.data.database
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.moviesreview.data.dataclasses.ListItemData
+import com.example.moviesreview.data.filmlist.FullListItemData
 
 @Dao
 interface MoviesDao {
@@ -14,6 +14,6 @@ interface MoviesDao {
     fun addData(data: Movies)
 
     @Query("SELECT id, name, image, date, country, kind, type FROM Movies WHERE isTop=:isTop")
-    fun getListData(isTop: Boolean): List<ListItemData>
+    fun getListData(isTop: Boolean): List<FullListItemData>
 
 }

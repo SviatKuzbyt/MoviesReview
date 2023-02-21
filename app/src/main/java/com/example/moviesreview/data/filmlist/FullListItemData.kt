@@ -1,10 +1,10 @@
-package com.example.moviesreview.data.dataclasses
+package com.example.moviesreview.data.filmlist
 
-data class ListItemData(
+data class FullListItemData(
     val id: Int,
     val name: String,
     val image: Int,
-    var date: String,
+    val date: String,
     val country: String,
     val kind: String,
     val type: String,
