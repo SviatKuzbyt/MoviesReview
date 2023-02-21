@@ -13,7 +13,7 @@ internal class MoviesDataBaseTest{
     @Before
     fun setup() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val dataBase = Room.databaseBuilder(appContext, MoviesDataBase::class.java, "Movies").build()
+        val dataBase = MoviesDataBase.getInstance(appContext)
         dao = dataBase.dao()
     }
 
