@@ -16,4 +16,10 @@ interface MoviesDao {
     @Query("SELECT id, name, image, date, country, kind, type FROM Movies WHERE isTop=:isTop")
     fun getListData(isTop: Boolean): List<FullListItemData>
 
+    @Query("SELECT * FROM Movies WHERE id=:id LIMIT 1")
+    fun getInformation(id: Int): Movies
+
+    @Query("UPDATE movies SET followed=:isFollowed WHERE id=:id")
+    fun updateFollowed(isFollowed: Boolean, id: Int)
+
 }

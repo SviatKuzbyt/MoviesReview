@@ -1,5 +1,6 @@
 package com.example.moviesreview.data.temp
 
+import com.example.moviesreview.R
 import com.example.moviesreview.data.database.Movies
 import com.example.moviesreview.data.database.MoviesDao
 
@@ -8,7 +9,7 @@ class InitDataBase(private val dao: MoviesDao){
         Movies(
             0,
             "Hangover",
-            2131165411,
+            R.drawable.poster0,
             false,
             "http://www.youtube.com/watch?v=4jk43p4IBQc",
             "https://www.youtube.com/watch?v=QqVFXyaRL90",
@@ -25,7 +26,7 @@ class InitDataBase(private val dao: MoviesDao){
         Movies(
             0,
             "Mean Girls",
-            2131165412,
+            R.drawable.poster1,
             false,
             "https://youtu.be/oDU84nmSDZY",
             "http://www.youtube.com/watch?v=3raLsO_LVVc",
@@ -42,7 +43,7 @@ class InitDataBase(private val dao: MoviesDao){
         Movies(
             0,
             "The Office",
-            2131165413,
+            R.drawable.poster2,
             false,
             "https://www.primevideo.com/dp/amzn1.dv.gti.7cb027c1-a767-2c73-f659-9fcb9d1064a7?autoplay=0&ref_=atv_cf_strg_wb",
             "https://youtu.be/2iKZmRR9AR4",
@@ -59,7 +60,7 @@ class InitDataBase(private val dao: MoviesDao){
         Movies(
             0,
             "Brooklyn Nine-Nine",
-            2131165414,
+            R.drawable.poster3,
             false,
             "https://www.netflix.com/watch/70281562?source=35",
             "https://www.youtube.com/watch?v=icTOP9F17pU",
@@ -76,7 +77,7 @@ class InitDataBase(private val dao: MoviesDao){
         Movies(
             0,
             "Friends",
-            2131165415,
+            R.drawable.poster4,
             false,
             "https://www.netflix.com/in/title/70153404",
             "https://youtu.be/IEEbUzffzrk",

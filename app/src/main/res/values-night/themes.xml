@@ -13,5 +13,6 @@
         <item name="android:statusBarColor">@color/dark_background</item>
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/dark_background</item>
+        <item name="colorSearchEditText">@color/dark_gray</item>
     </style>
 </resources>
