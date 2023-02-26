@@ -56,6 +56,8 @@
                   <entry key="Duration" value="90" />
                   <entry key="Pixel_2_API_28" value="120" />
                   <entry key="Tests" value="360" />
+                  <entry key="Xiaomi" value="120" />
+                  <entry key="Xiaomi&#10; M2004J19C" value="120" />
                 </map>
               </option>
             </AndroidTestResultsTableState>

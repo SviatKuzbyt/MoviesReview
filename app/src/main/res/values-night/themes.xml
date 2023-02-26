@@ -14,5 +14,7 @@
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/dark_background</item>
         <item name="colorSearchEditText">@color/dark_gray</item>
+        <item name="android:background">@color/dark_background</item>
+
     </style>
 </resources>

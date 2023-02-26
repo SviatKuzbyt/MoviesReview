@@ -17,4 +17,8 @@
     <string name="age_restrictions">Age restrictions</string>
     <string name="time">Time</string>
     <string name="cast">Cast</string>
+    <string name="watch">Watch</string>
+    <string name="trailer">See trailer</string>
+    <string name="follow">Follow</string>
+    <string name="description">Description</string>
 </resources>

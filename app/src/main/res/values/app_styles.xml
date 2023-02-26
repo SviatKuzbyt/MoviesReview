@@ -5,7 +5,7 @@
         <item name="android:minHeight">0dp</item>
     </style>
 
-    <style name="list_text_description">
+    <style name="main_text">
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">?colorOnPrimary</item>
@@ -23,7 +23,7 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="tool_bar_text">
+    <style name="main_bold_text">
         <item name="android:fontFamily">@font/inter_bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">?colorOnPrimary</item>
@@ -33,5 +33,10 @@
         <item name="android:fontFamily">@font/inter_bold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">?colorOnPrimary</item>
+    </style>
+
+    <style name="detail_activity_status_bar" parent="Theme.MoviesReview">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 </resources>

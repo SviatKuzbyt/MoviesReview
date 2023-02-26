@@ -15,5 +15,7 @@
         <item name="android:windowBackground">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="colorSearchEditText">@color/light_gray</item>
+        <item name="android:background">@color/white</item>
+
     </style>
 </resources>

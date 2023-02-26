@@ -1,6 +1,7 @@
 package com.example.moviesreview.ui.elements.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
 import com.example.moviesreview.data.filmlist.ShortListItemData
+import com.example.moviesreview.ui.detail.DetailActivity
 
 class FilmListAdapter (private val dataSet: List<ShortListItemData>, private val context: Context) :
     RecyclerView.Adapter<FilmListAdapter.ViewHolder>() {
@@ -38,7 +40,12 @@ class FilmListAdapter (private val dataSet: List<ShortListItemData>, private val
         viewHolder.listDetailText.text = dataSet[position].details
         viewHolder.listTypeFilm.text = dataSet[position].type
 
-        viewHolder.listImage.setImageDrawable(getDrawable(dataSet[position].image))
+        viewHolder.listImage.setImageDrawable(getDrawable(R.drawable.poster0))
+        viewHolder.itemView.setOnClickListener {
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("id", dataSet[position].id)
+            context.startActivity(intent)
+        }
     }
 
     private fun getDrawable(id: Int) = ContextCompat.getDrawable(context, id)

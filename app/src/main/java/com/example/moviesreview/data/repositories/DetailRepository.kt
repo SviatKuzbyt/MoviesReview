@@ -1,6 +1,8 @@
 package com.example.moviesreview.data.repositories
 
 import android.content.Context
+import android.graphics.drawable.Drawable
+import androidx.core.content.ContextCompat
 import com.example.moviesreview.R
 import com.example.moviesreview.data.database.Movies
 import com.example.moviesreview.data.database.MoviesDataBase
@@ -14,6 +16,7 @@ class DetailRepository(private val id: Int, private val context: Context) {
 
     private fun convertToDetailData(movies: Movies) = DetailData(
             movies.name,
+            ContextCompat.getDrawable(context, movies.image),
             movies.link,
             movies.linkTrailer,
             movies.followed,
@@ -22,12 +25,12 @@ class DetailRepository(private val id: Int, private val context: Context) {
         )
 
     private fun makeListOfMainInformation(movies: Movies) = listOf(
-            MainInformation(context.getString(R.string.rating) + ';', movies.mark.toString()),
-            MainInformation(context.getString(R.string.date) + ';', movies.date),
-            MainInformation(context.getString(R.string.country) + ';', movies.country),
-            MainInformation(context.getString(R.string.genre) + ';', movies.kind),
-            MainInformation(context.getString(R.string.time) + ';', movies.duration),
-            MainInformation(context.getString(R.string.cast) + ';', movies.actors),
+            MainInformation(context.getString(R.string.rating) + ':', movies.mark.toString()),
+            MainInformation(context.getString(R.string.date) + ':', movies.date),
+            MainInformation(context.getString(R.string.country) + ':', movies.country),
+            MainInformation(context.getString(R.string.genre) + ':', movies.kind),
+            MainInformation(context.getString(R.string.time) + ':', movies.duration),
+            MainInformation(context.getString(R.string.cast) + ':', movies.actors),
         )
 
     fun updateFollowed(isFollowed: Boolean){
@@ -37,6 +40,7 @@ class DetailRepository(private val id: Int, private val context: Context) {
 
 data class DetailData(
     val name: String,
+    val image: Drawable?,
     val link: String,
     val linkTrailer: String,
     var isFollowed: Boolean,

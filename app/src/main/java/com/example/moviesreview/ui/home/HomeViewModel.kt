@@ -1,6 +1,7 @@
 package com.example.moviesreview.ui.home
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -18,6 +19,7 @@ class HomeViewModel(application: Application): AndroidViewModel(application) {
     init {
         loadTopFilmList()
         loadOtherFilmList()
+        Log.v("VM bad work" ,"is")
     }
 
     fun loadTopFilmList()= viewModelScope.launch(Dispatchers.IO){

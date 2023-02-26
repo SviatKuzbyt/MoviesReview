@@ -20,14 +20,15 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:background="@drawable/icon"
-                android:layout_margin="16dp"/>
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
                 android:text="@string/app_description"
-                android:textAppearance="@style/tool_bar_text" />
+                android:textAppearance="@style/main_bold_text" />
         </LinearLayout>
 
         <EditText
@@ -35,11 +36,10 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/search_background"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_margin="16dp"
             android:hint="@string/search"
             android:paddingHorizontal="16dp"
-            android:textAppearance="@style/list_text_description"/>
+            android:textAppearance="@style/main_text"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
