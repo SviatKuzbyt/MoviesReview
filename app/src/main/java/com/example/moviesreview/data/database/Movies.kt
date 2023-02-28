@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Movies(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val name: String,
-    val image: Int,
+    val image: String,
     val followed: Boolean,
     val link: String,
     val linkTrailer: String,

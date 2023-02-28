@@ -52,8 +52,7 @@
                     android:id="@+id/imagePoster"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/poster3" />
+                    android:scaleType="centerCrop" />
 
             </androidx.cardview.widget.CardView>
 
@@ -65,7 +64,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/inter_bold"
-                android:text="2edfsvdfa"
                 android:textAlignment="center"
                 android:textColor="?colorOnPrimary"
                 android:textSize="20sp"

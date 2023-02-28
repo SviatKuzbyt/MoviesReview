@@ -40,15 +40,12 @@ class FilmListAdapter (private val dataSet: List<ShortListItemData>, private val
         viewHolder.listDetailText.text = dataSet[position].details
         viewHolder.listTypeFilm.text = dataSet[position].type
 
-        viewHolder.listImage.setImageDrawable(getDrawable(R.drawable.poster0))
+        viewHolder.listImage.setImageBitmap(dataSet[position].image)
         viewHolder.itemView.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra("id", dataSet[position].id)
             context.startActivity(intent)
         }
     }
-
-    private fun getDrawable(id: Int) = ContextCompat.getDrawable(context, id)
-
     override fun getItemCount() = dataSet.size
 }

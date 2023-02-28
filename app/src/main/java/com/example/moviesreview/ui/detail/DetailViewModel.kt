@@ -1,7 +1,9 @@
 package com.example.moviesreview.ui.detail
 
 import android.app.Application
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.moviesreview.data.repositories.DetailRepository
 import com.example.moviesreview.data.repositories.MainInformation
@@ -10,7 +12,7 @@ import kotlinx.coroutines.launch
 
 
 class DetailViewModel(application: Application, private val id: Int): ViewModel()   {
-    val imagePoster = MutableLiveData<Drawable?>()
+    val imagePoster = MutableLiveData<Bitmap?>()
     val label = MutableLiveData<String>()
     val link = MutableLiveData<String>()
     val trailerLink = MutableLiveData<String>()
@@ -21,10 +23,19 @@ class DetailViewModel(application: Application, private val id: Int): ViewModel(
     private val repository = DetailRepository(id, application)
 
     init {
-        loadData()
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                repository.getPosterFolder()
+                loadData()
+            }
+            catch (e: Exception){
+                Log.e("DetailActivityError", e.message.toString())
+            }
+
+        }
     }
 
-    private fun loadData() = viewModelScope.launch(Dispatchers.IO){
+    private fun loadData() {
         val information = repository.getInformation()
 
         imagePoster.postValue(information.image)
@@ -36,8 +47,10 @@ class DetailViewModel(application: Application, private val id: Int): ViewModel(
         description.postValue(information.descriptor)
     }
 
-    fun updateFollowed(isFollowed: Boolean) = viewModelScope.launch(Dispatchers.IO){
-        repository.updateFollowed(isFollowed)
+    fun updateFollowed() = viewModelScope.launch(Dispatchers.IO){
+        val newFollow = !isFollowed.value!!
+        repository.updateFollowed(newFollow)
+        isFollowed.postValue(newFollow)
     }
 
     fun getId() = id

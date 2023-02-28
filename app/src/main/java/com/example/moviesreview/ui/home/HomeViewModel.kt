@@ -17,24 +17,22 @@ class HomeViewModel(application: Application): AndroidViewModel(application) {
     private val repository = HomeRepository(application)
 
     init {
-        loadTopFilmList()
-        loadOtherFilmList()
-        Log.v("VM bad work" ,"is")
-    }
-
-    fun loadTopFilmList()= viewModelScope.launch(Dispatchers.IO){
-        try {
-            topFilmList.postValue(repository.getFilms(true))
-        } catch (e: Exception){
-            error.postValue("Error: ${e.message}")
+        viewModelScope.launch(Dispatchers.IO){
+            try {
+                repository.getPosterFolder()
+                loadTopFilmList()
+                loadOtherFilmList()
+            } catch (e: Exception){
+                error.postValue("Error: ${e.message}")
+            }
         }
     }
 
-    fun loadOtherFilmList()= viewModelScope.launch(Dispatchers.IO) {
-        try {
-            otherFilmList.postValue(repository.getFilms(false))
-        } catch (e: Exception) {
-            error.postValue("Error: ${e.message}")
-        }
+    private fun loadTopFilmList(){
+        topFilmList.postValue(repository.getFilms(true))
+    }
+
+    private fun loadOtherFilmList(){
+        otherFilmList.postValue(repository.getFilms(false))
     }
 }

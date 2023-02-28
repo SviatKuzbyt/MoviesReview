@@ -9,7 +9,7 @@ class InitDataBase(private val dao: MoviesDao){
         Movies(
             0,
             "Hangover",
-            R.drawable.poster0,
+            "poster0.jpg",
             false,
             "http://www.youtube.com/watch?v=4jk43p4IBQc",
             "https://www.youtube.com/watch?v=QqVFXyaRL90",
@@ -26,7 +26,7 @@ class InitDataBase(private val dao: MoviesDao){
         Movies(
             0,
             "Mean Girls",
-            R.drawable.poster1,
+            "poster1.jpg",
             false,
             "https://youtu.be/oDU84nmSDZY",
             "http://www.youtube.com/watch?v=3raLsO_LVVc",
@@ -43,7 +43,7 @@ class InitDataBase(private val dao: MoviesDao){
         Movies(
             0,
             "The Office",
-            R.drawable.poster2,
+            "poster2.jpg",
             false,
             "https://www.primevideo.com/dp/amzn1.dv.gti.7cb027c1-a767-2c73-f659-9fcb9d1064a7?autoplay=0&ref_=atv_cf_strg_wb",
             "https://youtu.be/2iKZmRR9AR4",
@@ -60,7 +60,7 @@ class InitDataBase(private val dao: MoviesDao){
         Movies(
             0,
             "Brooklyn Nine-Nine",
-            R.drawable.poster3,
+            "poster3.jpg",
             false,
             "https://www.netflix.com/watch/70281562?source=35",
             "https://www.youtube.com/watch?v=icTOP9F17pU",
@@ -77,7 +77,7 @@ class InitDataBase(private val dao: MoviesDao){
         Movies(
             0,
             "Friends",
-            R.drawable.poster4,
+            "poster4.jpg",
             false,
             "https://www.netflix.com/in/title/70153404",
             "https://youtu.be/IEEbUzffzrk",

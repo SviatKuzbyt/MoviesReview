@@ -2,6 +2,7 @@ package com.example.moviesreview.ui.detail
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Rect
 import android.net.Uri
 import android.os.Bundle
@@ -67,11 +68,7 @@ class DetailActivity : AppCompatActivity() {
                 toolbarDetail.visibility = View.VISIBLE
         }
 
-        imageBackground = findViewById(R.id.imageBackground)
 
-        Glide.with(this).load(R.drawable.poster3)
-            .apply(RequestOptions.bitmapTransform(BlurTransformation(12, 3)))
-            .into(imageBackground)
 
         textLabel = findViewById(R.id.textLabel)
         textToolbar = findViewById(R.id.textToolbar)
@@ -97,8 +94,31 @@ class DetailActivity : AppCompatActivity() {
             val adapter = MainInformationAdapter(it)
             recyclerMainInformation.adapter = adapter
         }
+
+        buttonFollow = findViewById(R.id.buttonFollow)
+        viewModel.isFollowed.observe(this){
+            if (it)
+                buttonFollow.background = ContextCompat.getDrawable(this, R.drawable.follow_checked_ic)
+            else buttonFollow.background = ContextCompat.getDrawable(this, R.drawable.followed_ic)
+        }
+
+        buttonFollow.setOnClickListener { viewModel.updateFollowed() }
+
+        imagePoster = findViewById(R.id.imagePoster)
+        imageBackground = findViewById(R.id.imageBackground)
+
+        viewModel.imagePoster.observe(this){
+            imagePoster.setImageBitmap(it)
+            blurBackground(imageBackground, it)
+
+        }
     }
 
+    private fun blurBackground(imageView: ImageView, image: Bitmap?){
+        Glide.with(this).load(image)
+            .apply(RequestOptions.bitmapTransform(BlurTransformation(12, 3)))
+            .into(imageView)
+    }
     private fun setBackButton(button: Button){
         button.setOnClickListener {
             finish()
