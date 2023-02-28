@@ -3,12 +3,11 @@ package com.example.moviesreview.data.repositories
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
-import androidx.core.content.ContextCompat
 import com.example.moviesreview.R
 import com.example.moviesreview.data.DataStore
 import com.example.moviesreview.data.database.Movies
 import com.example.moviesreview.data.database.MoviesDataBase
-import com.example.moviesreview.data.posters.loadImageFromStorage
+import com.example.moviesreview.data.posters.loadPoster
 
 class DetailRepository(private val id: Int, private val context: Context) {
     private val dao = MoviesDataBase.getInstance(context).dao()
@@ -20,7 +19,7 @@ class DetailRepository(private val id: Int, private val context: Context) {
 
     private fun convertToDetailData(movies: Movies) = DetailData(
             movies.name,
-            loadImageFromStorage(movies.image, postersFolder),
+            loadPoster(movies.image, context),
             movies.link,
             movies.linkTrailer,
             movies.followed,
@@ -49,7 +48,7 @@ class DetailRepository(private val id: Int, private val context: Context) {
 
 data class DetailData(
     val name: String,
-    val image: Bitmap?,
+    val image: Drawable?,
     val link: String,
     val linkTrailer: String,
     var isFollowed: Boolean,

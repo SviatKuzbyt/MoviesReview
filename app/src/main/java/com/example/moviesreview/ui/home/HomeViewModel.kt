@@ -30,6 +30,7 @@ class HomeViewModel(application: Application): AndroidViewModel(application) {
 
     private fun loadTopFilmList(){
         topFilmList.postValue(repository.getFilms(true))
+        Log.v("topFilmList", topFilmList.value.toString())
     }
 
     private fun loadOtherFilmList(){

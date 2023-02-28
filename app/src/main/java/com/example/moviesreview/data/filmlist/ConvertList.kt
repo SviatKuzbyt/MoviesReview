@@ -1,10 +1,9 @@
 package com.example.moviesreview.data.filmlist
 
 import android.content.Context
-import com.example.moviesreview.data.DataStore
-import com.example.moviesreview.data.posters.loadImageFromStorage
+import com.example.moviesreview.data.posters.loadPoster
 
-class ConvertList(private val postersFolder: String) {
+class ConvertList(private val context: Context) {
 
 
     fun getShortListItemData(list: List<FullListItemData>): List<ShortListItemData> {
@@ -12,7 +11,7 @@ class ConvertList(private val postersFolder: String) {
             ShortListItemData(
                 it.id,
                 it.name,
-                loadImageFromStorage(it.image, postersFolder),
+                loadPoster(it.image, context),
                 makeDetailText(it),
                 it.type
             )

@@ -43,6 +43,7 @@ class HomeFragment : Fragment() {
 
         viewModel.error.observe(viewLifecycleOwner){
             Toast.makeText(activity, it, Toast.LENGTH_LONG).show()
+            Log.v("dataBaseError", it)
         }
     }
 

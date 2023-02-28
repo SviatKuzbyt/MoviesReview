@@ -1,17 +1,17 @@
 package com.example.moviesreview.data.posters
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.Log
-import java.io.File
-import java.io.FileInputStream
+import java.io.InputStream
 
 
-fun loadImageFromStorage(fileName: String, folderName: String): Bitmap? {
+fun loadPoster(fileName: String, context: Context): Drawable? {
     return try {
-        val file = File(folderName, fileName)
-        BitmapFactory.decodeStream(FileInputStream(file))
-    } catch (e: Exception) {
+        val ims: InputStream = context.assets.open("posters/$fileName")
+        return Drawable.createFromStream(ims, null)
+        }
+    catch (e: Exception) {
         Log.e("loadImageFromStorage", e.message.toString() + fileName)
         null
     }

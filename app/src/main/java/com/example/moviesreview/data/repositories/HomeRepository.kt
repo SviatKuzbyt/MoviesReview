@@ -16,6 +16,6 @@ class HomeRepository(private val context: Context) {
     }
 
     fun getFilms(isTop: Boolean): List<ShortListItemData> {
-        return ConvertList(postersFolder).getShortListItemData(dao.getListData(isTop))
+        return ConvertList(context).getShortListItemData(dao.getListData(isTop))
     }
 }

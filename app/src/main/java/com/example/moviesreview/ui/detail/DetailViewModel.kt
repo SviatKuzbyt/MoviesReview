@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 
 class DetailViewModel(application: Application, private val id: Int): ViewModel()   {
-    val imagePoster = MutableLiveData<Bitmap?>()
+    val imagePoster = MutableLiveData<Drawable?>()
     val label = MutableLiveData<String>()
     val link = MutableLiveData<String>()
     val trailerLink = MutableLiveData<String>()

@@ -18,17 +18,19 @@ internal class MoviesDataBaseTest{
     }
 
     @Test
-    fun checkInsertData(){
-        val initDataBase = InitDataBase(dao)
-        initDataBase.addRecords()
-    }
-
-    @Test
     fun checkGetData(){
         val records = dao.getData()
         Assert.assertNotEquals(records, emptyList<Movies>())
         println("RESULT: $records")
     }
+
+    @Test
+    fun checkGetOtherFilms(){
+        val records = dao.getListData(false)
+        Assert.assertNotEquals(records, emptyList<Movies>())
+        println("RESULT: $records")
+    }
+
 
     @Test
     fun checkGetInformation(){

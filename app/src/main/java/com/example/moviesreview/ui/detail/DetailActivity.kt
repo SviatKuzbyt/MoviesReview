@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Rect
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -108,13 +109,13 @@ class DetailActivity : AppCompatActivity() {
         imageBackground = findViewById(R.id.imageBackground)
 
         viewModel.imagePoster.observe(this){
-            imagePoster.setImageBitmap(it)
+            imagePoster.setImageDrawable(it)
             blurBackground(imageBackground, it)
 
         }
     }
 
-    private fun blurBackground(imageView: ImageView, image: Bitmap?){
+    private fun blurBackground(imageView: ImageView, image: Drawable?){
         Glide.with(this).load(image)
             .apply(RequestOptions.bitmapTransform(BlurTransformation(12, 3)))
             .into(imageView)
