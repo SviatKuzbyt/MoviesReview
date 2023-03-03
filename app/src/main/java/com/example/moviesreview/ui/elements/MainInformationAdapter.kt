@@ -1,4 +1,4 @@
-package com.example.moviesreview.ui.elements.adapters
+package com.example.moviesreview.ui.elements
 
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +14,9 @@ class MainInformationAdapter(private val dataSet: List<MainInformation>) :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val informationLabelText: TextView
         val informationContentText: TextView
-
         init {
             informationLabelText = view.findViewById(R.id.informationLabelText)
             informationContentText = view.findViewById(R.id.informationContentText)
-
         }
     }
 

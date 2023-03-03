@@ -21,9 +21,10 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/back_white_ic"
+                android:background="@drawable/back_ic"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/back"/>
 
                 <ImageView
                     android:id="@+id/imageBackground"
@@ -33,9 +34,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:scaleType="centerCrop"
-                    />
-
-
+                    tools:ignore="ContentDescription" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
@@ -46,13 +45,15 @@
                 app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                android:transitionName="poster">
 
                 <ImageView
                     android:id="@+id/imagePoster"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/movie_poster" />
 
             </androidx.cardview.widget.CardView>
 
@@ -154,25 +155,14 @@
         android:id="@+id/toolbarDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:windowBackground"
         android:orientation="horizontal"
         android:paddingTop="24dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/backButtonToolbar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/back_ic" />
-
-        <TextView
-            android:id="@+id/textToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent"
-            android:text="fsjhfjhfjsdfhjk"
-            android:textAppearance="@style/main_bold_text" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/back_ic"
+        app:titleTextAppearance="@style/main_bold_text">
     </androidx.appcompat.widget.Toolbar>
 </FrameLayout>

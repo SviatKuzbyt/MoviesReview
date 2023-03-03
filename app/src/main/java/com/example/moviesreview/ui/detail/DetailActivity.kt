@@ -2,12 +2,14 @@ package com.example.moviesreview.ui.detail
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.transition.ChangeBounds
+import android.transition.Fade
 import android.view.View
+import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -20,45 +22,44 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviesreview.R
-import com.example.moviesreview.ui.elements.adapters.MainInformationAdapter
+import com.example.moviesreview.ui.elements.MainInformationAdapter
 import jp.wasabeef.glide.*
 import jp.wasabeef.glide.transformations.BlurTransformation
 
 class DetailActivity : AppCompatActivity() {
-    lateinit var scrollView: ScrollView
-    lateinit var textLabel: TextView
-    lateinit var backButtonBackground: Button
-    lateinit var imageBackground: ImageView
-    lateinit var imagePoster: ImageView
-    lateinit var buttonTrailer: Button
-    lateinit var buttonLink: Button
-    lateinit var buttonFollow: Button
-    lateinit var recyclerMainInformation: RecyclerView
-    lateinit var textDescription: TextView
-    lateinit var toolbarDetail: androidx.appcompat.widget.Toolbar
-    lateinit var backButtonToolbar: Button
-    lateinit var textToolbar: TextView
+    private lateinit var viewModel: DetailViewModel
 
-    lateinit var viewModel: DetailViewModel
+    private val scrollView: ScrollView by lazy { findViewById(R.id.scrollview) }
+    private val toolbarDetail: androidx.appcompat.widget.Toolbar by lazy { findViewById(R.id.toolbarDetail) }
+    private val imagePoster: ImageView by lazy { findViewById(R.id.imagePoster) }
+    private val imageBackground: ImageView by lazy { findViewById(R.id.imageBackground) }
+    private val backButtonBackground: Button by lazy { findViewById(R.id.backButtonBackground) }
+    private val textLabel: TextView by lazy { findViewById(R.id.textLabel) }
+    private val buttonLink: Button by lazy { findViewById(R.id.buttonLink) }
+    private val buttonTrailer: Button by lazy { findViewById(R.id.buttonTrailer) }
+    private val buttonFollow: Button by lazy { findViewById(R.id.buttonFollow) }
+    private val recyclerMainInformation: RecyclerView by lazy { findViewById(R.id.recyclerMainInformation) }
+    private val textDescription: TextView by lazy { findViewById(R.id.textDescription) }
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupWindowAnimations()
         setContentView(R.layout.activity_detail)
+        setupViewModel()
+        setupViews()
+    }
 
-        val id = intent.getIntExtra("id", 1)
-        viewModel = ViewModelProvider(this, DetailViewModelFactory(application, id))[DetailViewModel::class.java]
+    private fun setupWindowAnimations() {
+        with(window) {
+            requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+            enterTransition = Fade().apply { duration = 300 }
+            sharedElementEnterTransition = ChangeBounds().apply { duration = 500 }
+        }
+    }
 
-        toolbarDetail = findViewById(R.id.toolbarDetail)
+    private fun setupViews() {
         setSupportActionBar(toolbarDetail)
 
-        backButtonBackground = findViewById(R.id.backButtonBackground)
-        setBackButton(backButtonBackground)
-
-        backButtonToolbar = findViewById(R.id.backButtonToolbar)
-        setBackButton(backButtonToolbar)
-
-        scrollView = findViewById(R.id.scrollview)
         val rect = Rect()
         scrollView.setOnScrollChangeListener { _, _, _, _, _ ->
             if(backButtonBackground.getGlobalVisibleRect(rect)){
@@ -69,49 +70,44 @@ class DetailActivity : AppCompatActivity() {
                 toolbarDetail.visibility = View.VISIBLE
         }
 
-
-
-        textLabel = findViewById(R.id.textLabel)
-        textToolbar = findViewById(R.id.textToolbar)
-        viewModel.label.observe(this){
-            setText(textLabel, it)
-            setText(textToolbar, it)
-        }
-
-        buttonLink = findViewById(R.id.buttonLink)
-        setLinkButton(buttonLink, viewModel.link)
-
-        buttonTrailer = findViewById(R.id.buttonTrailer)
-        setLinkButton(buttonTrailer, viewModel.trailerLink)
-
-        textDescription = findViewById(R.id.textDescription)
-        viewModel.description.observe(this){
-            setText(textDescription, it)
-        }
-
-        recyclerMainInformation = findViewById(R.id.recyclerMainInformation)
         recyclerMainInformation.layoutManager = LinearLayoutManager(this)
-        viewModel.mainInformation.observe(this){
-            val adapter = MainInformationAdapter(it)
-            recyclerMainInformation.adapter = adapter
-        }
 
-        buttonFollow = findViewById(R.id.buttonFollow)
-        viewModel.isFollowed.observe(this){
-            if (it)
-                buttonFollow.background = ContextCompat.getDrawable(this, R.drawable.follow_checked_ic)
-            else buttonFollow.background = ContextCompat.getDrawable(this, R.drawable.followed_ic)
-        }
+        toolbarDetail.setNavigationOnClickListener { finishAfterTransition() }
+        backButtonBackground.setOnClickListener { finishAfterTransition() }
 
+        setLinkButton(buttonLink, viewModel.link)
+        setLinkButton(buttonTrailer, viewModel.trailerLink)
         buttonFollow.setOnClickListener { viewModel.updateFollowed() }
 
-        imagePoster = findViewById(R.id.imagePoster)
-        imageBackground = findViewById(R.id.imageBackground)
+        viewModel.error.observe(this) { Toast.makeText(this, it, Toast.LENGTH_LONG).show() }
+    }
 
-        viewModel.imagePoster.observe(this){
+    private fun setupViewModel() {
+        viewModel =
+            ViewModelProvider(this,
+                DetailViewModelFactory(application, intent.getIntExtra("id", 1))
+            )[DetailViewModel::class.java]
+
+        viewModel.label.observe(this){
+            textLabel.text = it
+            toolbarDetail.title = it
+        }
+
+        viewModel.description.observe(this){
+            textDescription.text = it
+        }
+
+        viewModel.mainInformation.observe(this) {
+            recyclerMainInformation.adapter = MainInformationAdapter(it)
+        }
+
+        viewModel.isFollowed.observe(this) {
+            buttonFollow.background = ContextCompat.getDrawable(this, if (it) R.drawable.follow_checked_ic else R.drawable.followed_ic)
+        }
+
+        viewModel.imagePoster.observe(this) {
             imagePoster.setImageDrawable(it)
             blurBackground(imageBackground, it)
-
         }
     }
 
@@ -120,24 +116,14 @@ class DetailActivity : AppCompatActivity() {
             .apply(RequestOptions.bitmapTransform(BlurTransformation(12, 3)))
             .into(imageView)
     }
-    private fun setBackButton(button: Button){
-        button.setOnClickListener {
-            finish()
-        }
-    }
 
-    private fun setText(textView: TextView, text: String){
-        textView.text = text
-    }
-
-    private fun setLinkButton(button: Button, link: MutableLiveData<String>){
+    private fun setLinkButton(button: Button, link: MutableLiveData<String>) {
         button.setOnClickListener {
             try {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(link.value)))
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 Toast.makeText(this, "App don't founded for this action", Toast.LENGTH_LONG).show()
             }
         }
     }
-
 }

@@ -1,17 +1,15 @@
 package com.example.moviesreview.ui.detail
 
 import android.app.Application
-import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
-import android.util.Log
 import androidx.lifecycle.*
+import com.example.moviesreview.data.repositories.DetailData
 import com.example.moviesreview.data.repositories.DetailRepository
 import com.example.moviesreview.data.repositories.MainInformation
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
-class DetailViewModel(application: Application, private val id: Int): ViewModel()   {
+class DetailViewModel(application: Application, id: Int): ViewModel()   {
     val imagePoster = MutableLiveData<Drawable?>()
     val label = MutableLiveData<String>()
     val link = MutableLiveData<String>()
@@ -19,25 +17,27 @@ class DetailViewModel(application: Application, private val id: Int): ViewModel(
     val isFollowed = MutableLiveData<Boolean>()
     val mainInformation = MutableLiveData<List<MainInformation>>()
     val description = MutableLiveData<String>()
+    val error = MutableLiveData<String>()
 
-    private val repository = DetailRepository(id, application)
+    private var repository = DetailRepository(id, application)
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                repository.getPosterFolder()
                 loadData()
             }
             catch (e: Exception){
-                Log.e("DetailActivityError", e.message.toString())
+                error.postValue("Error: ${e.message}")
             }
-
         }
     }
 
     private fun loadData() {
         val information = repository.getInformation()
+        postData(information)
+    }
 
+    private fun postData(information: DetailData){
         imagePoster.postValue(information.image)
         label.postValue(information.name)
         link.postValue(information.link)
@@ -48,11 +48,12 @@ class DetailViewModel(application: Application, private val id: Int): ViewModel(
     }
 
     fun updateFollowed() = viewModelScope.launch(Dispatchers.IO){
-        val newFollow = !isFollowed.value!!
-        repository.updateFollowed(newFollow)
-        isFollowed.postValue(newFollow)
+        try {
+            val newFollow = !isFollowed.value!!
+            repository.updateFollowed(newFollow)
+            isFollowed.postValue(newFollow)
+        } catch (e: Exception){
+            error.postValue("Error: ${e.message}")
+        }
     }
-
-    fun getId() = id
 }
-

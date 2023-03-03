@@ -32,8 +32,9 @@
                 android:textAppearance="@style/main_bold_text" />
         </LinearLayout>
 
-        <EditText
+        <TextView
             android:id="@+id/searchEditText"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/search_background"
@@ -44,6 +45,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/homeNestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">

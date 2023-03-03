@@ -1,9 +1,6 @@
 package com.example.moviesreview.data.database
 
-import android.content.Context
-import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
-import com.example.moviesreview.data.temp.InitDataBase
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test

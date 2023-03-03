@@ -1,5 +1,4 @@
 package com.example.moviesreview.ui.detail
-
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

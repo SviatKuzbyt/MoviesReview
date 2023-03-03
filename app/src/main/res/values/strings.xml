@@ -7,7 +7,7 @@
     <string name="settings">Settings</string>
     <string name="movie_poster">Movie poster</string>
     <string name="app_description">Movies and serials</string>
-    <string name="search">Search...</string>
+    <string name="search">Search…</string>
     <string name="top">Top</string>
     <string name="other">Others</string>
     <string name="rating">Rating</string>
@@ -21,4 +21,5 @@
     <string name="trailer">See trailer</string>
     <string name="follow">Follow</string>
     <string name="description">Description</string>
+    <string name="back">back</string>
 </resources>
