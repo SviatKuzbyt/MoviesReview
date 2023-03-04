@@ -17,4 +17,7 @@ interface MoviesDao {
 
     @Query("UPDATE movies SET followed=:isFollowed WHERE id=:id")
     fun updateFollowed(isFollowed: Boolean, id: Int)
+
+    @Query("SELECT id, name, image, date, country, kind, type FROM Movies WHERE name LIKE :search")
+    fun getSearchListData(search: String): List<FullListItemData>
 }

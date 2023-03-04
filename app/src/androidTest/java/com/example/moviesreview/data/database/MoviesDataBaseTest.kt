@@ -1,6 +1,7 @@
 package com.example.moviesreview.data.database
 
 import androidx.test.platform.app.InstrumentationRegistry
+import com.example.moviesreview.data.elements.FullListItemData
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -43,5 +44,11 @@ internal class MoviesDataBaseTest{
         dao.updateFollowed(followed, 1)
         val newRecord = dao.getInformation(1)
         Assert.assertNotEquals(oldRecord.followed, newRecord.followed)
+    }
+
+    @Test
+    fun checkGetSearchList(){
+        val record = dao.getSearchListData("%Hango%")
+        Assert.assertNotEquals(record, emptyList<FullListItemData>())
     }
 }
