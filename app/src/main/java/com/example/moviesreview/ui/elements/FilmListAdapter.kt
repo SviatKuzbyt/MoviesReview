@@ -1,5 +1,6 @@
 package com.example.moviesreview.ui.elements
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
@@ -15,7 +16,7 @@ import com.example.moviesreview.R
 import com.example.moviesreview.data.elements.ShortListItemData
 import com.example.moviesreview.ui.detail.DetailActivity
 
-class FilmListAdapter(private val dataSet: List<ShortListItemData>, private val context: Context) :
+class FilmListAdapter(private var dataSet: List<ShortListItemData>, private val context: Context) :
     RecyclerView.Adapter<FilmListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -58,4 +59,11 @@ class FilmListAdapter(private val dataSet: List<ShortListItemData>, private val 
         }
     }
     override fun getItemCount() = dataSet.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newData: List<ShortListItemData>) {
+        notifyItemRangeRemoved(0, itemCount)
+        dataSet = newData
+        notifyItemRangeInserted(0, itemCount)
+    }
 }

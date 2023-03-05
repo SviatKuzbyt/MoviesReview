@@ -1,6 +1,5 @@
 package com.example.moviesreview.ui.detail
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
@@ -23,7 +22,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviesreview.R
 import com.example.moviesreview.ui.elements.MainInformationAdapter
-import jp.wasabeef.glide.*
 import jp.wasabeef.glide.transformations.BlurTransformation
 
 class DetailActivity : AppCompatActivity() {
@@ -109,6 +107,10 @@ class DetailActivity : AppCompatActivity() {
             imagePoster.setImageDrawable(it)
             blurBackground(imageBackground, it)
         }
+
+        viewModel.isToolbarVisible.observe(this){
+            if (it) toolbarDetail.visibility = View.VISIBLE
+        }
     }
 
     private fun blurBackground(imageView: ImageView, image: Drawable?){
@@ -124,6 +126,13 @@ class DetailActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 Toast.makeText(this, "App don't founded for this action", Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (!isFinishing){
+            viewModel.isToolbarVisible.value = toolbarDetail.isVisible
         }
     }
 }

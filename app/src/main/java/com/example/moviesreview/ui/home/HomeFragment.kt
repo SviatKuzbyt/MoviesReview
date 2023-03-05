@@ -1,10 +1,13 @@
 package com.example.moviesreview.ui.home
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
@@ -13,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
 import com.example.moviesreview.data.elements.ShortListItemData
 import com.example.moviesreview.ui.elements.FilmListAdapter
+import com.example.moviesreview.ui.search.SearchActivity
 
 class HomeFragment : Fragment() {
     private val viewModel by viewModels<HomeViewModel>()
@@ -36,6 +40,14 @@ class HomeFragment : Fragment() {
 
         viewModel.error.observe(viewLifecycleOwner){
             Toast.makeText(activity, it, Toast.LENGTH_LONG).show()
+        }
+
+        val searchTextClick = view.findViewById<TextView>(R.id.searchTextClick)
+        searchTextClick.setOnClickListener{
+            startActivity(
+                Intent(activity, SearchActivity::class.java),
+                ActivityOptions.makeSceneTransitionAnimation(activity).toBundle()
+            )
         }
     }
 

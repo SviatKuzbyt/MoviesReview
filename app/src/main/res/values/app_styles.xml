@@ -40,4 +40,8 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
+
+    <style name="search_activity_status_bar" parent="Theme.MoviesReview">
+        <item name="android:statusBarColor">?colorSearchEditText</item>
+    </style>
 </resources>

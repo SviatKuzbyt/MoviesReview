@@ -8,6 +8,7 @@
     <string name="movie_poster">Movie poster</string>
     <string name="app_description">Movies and serials</string>
     <string name="search">Search…</string>
+    <string name="search_input">Enter the name of the film</string>
     <string name="top">Top</string>
     <string name="other">Others</string>
     <string name="rating">Rating</string>

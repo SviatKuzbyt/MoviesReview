@@ -18,6 +18,7 @@ class DetailViewModel(application: Application, id: Int): ViewModel()   {
     val mainInformation = MutableLiveData<List<MainInformation>>()
     val description = MutableLiveData<String>()
     val error = MutableLiveData<String>()
+    val isToolbarVisible = MutableLiveData<Boolean>()
 
     private var repository = DetailRepository(id, application)
 

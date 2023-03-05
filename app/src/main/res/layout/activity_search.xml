@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.search.SearchActivity">
+    tools:context=".ui.search.SearchActivity"
+    android:animateLayoutChanges="true">
 
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="56dp"
         android:background="?colorSearchEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,31 +21,39 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="@drawable/back_ic"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <com.example.moviesreview.ui.elements.SearchEditText
         android:id="@+id/textSearch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonCloseSearch"
+        android:background="@color/transparent"
+        android:hint="@string/search_input"
+        android:imeOptions="actionSearch"
+        android:importantForAutofill="no"
+        android:inputType="textAutoCorrect"
+        android:textAppearance="@style/main_text"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toStartOf="@+id/clearSearchText"
         app:layout_constraintStart_toEndOf="@+id/buttonCloseSearch"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textAppearance="@style/main_text"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/clearSearchText"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="@drawable/close_ic"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleSearch"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

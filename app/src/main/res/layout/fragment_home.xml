@@ -33,7 +33,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/searchEditText"
+            android:id="@+id/searchTextClick"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -65,7 +65,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp" />
 
             <TextView
@@ -81,7 +80,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
