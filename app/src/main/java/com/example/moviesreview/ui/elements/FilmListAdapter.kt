@@ -1,6 +1,5 @@
 package com.example.moviesreview.ui.elements
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
@@ -60,7 +59,6 @@ class FilmListAdapter(private var dataSet: List<ShortListItemData>, private val 
     }
     override fun getItemCount() = dataSet.size
 
-    @SuppressLint("NotifyDataSetChanged")
     fun updateData(newData: List<ShortListItemData>) {
         notifyItemRangeRemoved(0, itemCount)
         dataSet = newData
