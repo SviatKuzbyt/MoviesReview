@@ -9,9 +9,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
 import com.example.moviesreview.data.elements.CategoryData
+import com.example.moviesreview.ui.categories.activity.CategoryActivity
 import com.example.moviesreview.ui.detail.DetailActivity
 
-class CategoryAdapter(private val dataSet: List<CategoryData>, private val context: Context) :
+class CategoryAdapter(
+    private val dataSet: List<CategoryData>,
+    private val context: Context,
+):
     RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -25,17 +29,17 @@ class CategoryAdapter(private val dataSet: List<CategoryData>, private val conte
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.film_list_item, viewGroup, false)
+            .inflate(R.layout.category_item, viewGroup, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.categoryText.text = dataSet[position].name
-        viewHolder.categoryIcon.setBackgroundResource(R.drawable.categories_ic)
+        viewHolder.categoryIcon.setBackgroundResource(dataSet[position].icon)
 
         viewHolder.itemView.setOnClickListener {
-            val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("kind", dataSet[position].kind)
+            val intent = Intent(context, CategoryActivity::class.java)
+            intent.putExtra("kind", dataSet[position].name)
             intent.putExtra("type", dataSet[position].type)
 
             context.startActivity(intent)

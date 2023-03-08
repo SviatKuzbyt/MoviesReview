@@ -14,7 +14,7 @@ class SearchRepository(context: Context) {
         if (text.isEmpty())
             return emptyList()
 
-        val list = dao.getSearchListData("%${text}%")
+        val list = dao.getListDataSearch("%${text}%")
         return if (list.isNotEmpty())
             convertList.getShortListItemData(list)
         else

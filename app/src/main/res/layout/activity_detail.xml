@@ -156,12 +156,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:windowBackground"
-        android:orientation="horizontal"
         android:paddingTop="24dp"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/back_ic"
         app:titleTextAppearance="@style/main_bold_text">
     </androidx.appcompat.widget.Toolbar>

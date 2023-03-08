@@ -51,7 +51,7 @@ class DetailActivity : AppCompatActivity() {
         with(window) {
             requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
             enterTransition = Fade().apply { duration = 300 }
-            sharedElementEnterTransition = ChangeBounds().apply { duration = 500 }
+            sharedElementEnterTransition = ChangeBounds().apply { duration = 400 }
         }
     }
 

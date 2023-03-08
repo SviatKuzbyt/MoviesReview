@@ -48,7 +48,7 @@ internal class MoviesDataBaseTest{
 
     @Test
     fun checkGetSearchList(){
-        val record = dao.getSearchListData("%Hango%")
+        val record = dao.getListDataSearch("%Hango%")
         Assert.assertNotEquals(record, emptyList<FullListItemData>())
     }
 }

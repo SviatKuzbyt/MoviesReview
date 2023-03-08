@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.example.moviesreview.ui.categories.CategoriesFragment"
+        android:name="com.example.moviesreview.ui.categories.fragment.CategoriesFragment"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" />
     <fragment
