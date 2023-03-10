@@ -16,8 +16,4 @@
         android:title="@string/liked"
         android:icon="@drawable/follow_ic"/>
 
-    <item
-        android:id="@+id/settingsFragment"
-        android:title="@string/settings"
-        android:icon="@drawable/settings_ic"/>
 </menu>

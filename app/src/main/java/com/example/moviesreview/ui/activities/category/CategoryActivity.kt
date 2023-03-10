@@ -1,4 +1,4 @@
-package com.example.moviesreview.ui.categories.activity
+package com.example.moviesreview.ui.activities.category
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
 import com.example.moviesreview.ui.elements.FilmListAdapter
+import com.example.moviesreview.ui.elements.makeToastError
 
 class CategoryActivity : AppCompatActivity() {
 
@@ -41,7 +42,7 @@ class CategoryActivity : AppCompatActivity() {
 
     private fun setErrorToast(){
         viewModel.error.observe(this){
-            Toast.makeText(this, "Error: $it", Toast.LENGTH_LONG).show()
+            makeToastError(it, this)
         }
     }
 }

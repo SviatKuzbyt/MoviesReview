@@ -1,4 +1,4 @@
-package com.example.moviesreview.ui.search
+package com.example.moviesreview.ui.activities.search
 
 import android.animation.ObjectAnimator
 import android.content.Context
@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
 import com.example.moviesreview.ui.elements.SearchEditText
 import com.example.moviesreview.ui.elements.FilmListAdapter
+import com.example.moviesreview.ui.elements.makeToastError
 
 class SearchActivity : AppCompatActivity() {
 
@@ -37,8 +38,8 @@ class SearchActivity : AppCompatActivity() {
             finishAfterTransition()
         }
 
-        viewModel.toastMassage.observe(this){
-            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        viewModel.error.observe(this){
+            makeToastError(it, this)
         }
     }
 

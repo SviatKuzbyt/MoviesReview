@@ -26,4 +26,5 @@
     <string name="select_category">Select category</string>
     <string name="films">Films</string>
     <string name="serials">Serials</string>
+    <string name="like">Favorite films and serials</string>
 </resources>

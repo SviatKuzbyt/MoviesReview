@@ -1,4 +1,4 @@
-package com.example.moviesreview.ui.categories.activity
+package com.example.moviesreview.ui.activities.category
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

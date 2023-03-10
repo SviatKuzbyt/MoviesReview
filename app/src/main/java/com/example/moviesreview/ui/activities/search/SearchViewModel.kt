@@ -1,4 +1,4 @@
-package com.example.moviesreview.ui.search
+package com.example.moviesreview.ui.activities.search
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class SearchViewModel(application: Application): AndroidViewModel(application) {
     val list = MutableLiveData<List<ShortListItemData>>()
-    val toastMassage = MutableLiveData<String>()
+    val error = MutableLiveData<String>()
     private val repository = SearchRepository(application)
 
     fun searchFilms(searchText: String) = viewModelScope.launch(Dispatchers.IO) {
@@ -23,9 +23,9 @@ class SearchViewModel(application: Application): AndroidViewModel(application) {
                 list.postValue(result)
             }
         } catch (e: NoSuchElementException) {
-            toastMassage.postValue(e.message)
+            error.postValue(e.message)
         } catch (e: Exception) {
-            toastMassage.postValue("Something went wrong")
+            error.postValue("Something went wrong")
         }
     }
 }

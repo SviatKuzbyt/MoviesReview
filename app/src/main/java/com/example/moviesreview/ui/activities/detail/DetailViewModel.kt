@@ -1,4 +1,4 @@
-package com.example.moviesreview.ui.detail
+package com.example.moviesreview.ui.activities.detail
 
 import android.app.Application
 import android.graphics.drawable.Drawable

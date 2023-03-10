@@ -1,4 +1,4 @@
-package com.example.moviesreview.ui.home
+package com.example.moviesreview.ui.fragments.home
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

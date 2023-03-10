@@ -13,7 +13,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
 import com.example.moviesreview.data.elements.ShortListItemData
-import com.example.moviesreview.ui.detail.DetailActivity
+import com.example.moviesreview.ui.activities.detail.DetailActivity
 
 class FilmListAdapter(private var dataSet: List<ShortListItemData>, private val context: Context) :
     RecyclerView.Adapter<FilmListAdapter.ViewHolder>() {

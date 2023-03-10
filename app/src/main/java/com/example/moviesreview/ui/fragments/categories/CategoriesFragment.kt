@@ -1,4 +1,4 @@
-package com.example.moviesreview.ui.categories.fragment
+package com.example.moviesreview.ui.fragments.categories
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

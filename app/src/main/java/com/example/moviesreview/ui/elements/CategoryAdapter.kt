@@ -9,8 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
 import com.example.moviesreview.data.elements.CategoryData
-import com.example.moviesreview.ui.categories.activity.CategoryActivity
-import com.example.moviesreview.ui.detail.DetailActivity
+import com.example.moviesreview.ui.activities.category.CategoryActivity
 
 class CategoryAdapter(
     private val dataSet: List<CategoryData>,

@@ -1,4 +1,4 @@
-package com.example.moviesreview.ui.home
+package com.example.moviesreview.ui.fragments.home
 
 import android.app.ActivityOptions
 import android.content.Intent
@@ -16,7 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
 import com.example.moviesreview.data.elements.ShortListItemData
 import com.example.moviesreview.ui.elements.FilmListAdapter
-import com.example.moviesreview.ui.search.SearchActivity
+import com.example.moviesreview.ui.activities.search.SearchActivity
+import com.example.moviesreview.ui.elements.makeToastError
 
 class HomeFragment : Fragment() {
     private val viewModel by viewModels<HomeViewModel>()
@@ -39,7 +40,7 @@ class HomeFragment : Fragment() {
         setUpRecyclerView(otherFilmsRecycle, viewModel.otherFilmList)
 
         viewModel.error.observe(viewLifecycleOwner){
-            Toast.makeText(activity, it, Toast.LENGTH_LONG).show()
+            makeToastError(it, activity)
         }
 
         val searchTextClick = view.findViewById<TextView>(R.id.searchTextClick)

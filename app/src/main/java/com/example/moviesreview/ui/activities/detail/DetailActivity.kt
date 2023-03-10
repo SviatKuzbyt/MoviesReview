@@ -1,4 +1,4 @@
-package com.example.moviesreview.ui.detail
+package com.example.moviesreview.ui.activities.detail
 
 import android.content.Intent
 import android.graphics.Rect
@@ -21,7 +21,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviesreview.R
+import com.example.moviesreview.ui.activities.isChangeLikedFilmList
 import com.example.moviesreview.ui.elements.MainInformationAdapter
+import com.example.moviesreview.ui.elements.makeToastError
 import jp.wasabeef.glide.transformations.BlurTransformation
 
 class DetailActivity : AppCompatActivity() {
@@ -75,9 +77,12 @@ class DetailActivity : AppCompatActivity() {
 
         setLinkButton(buttonLink, viewModel.link)
         setLinkButton(buttonTrailer, viewModel.trailerLink)
-        buttonFollow.setOnClickListener { viewModel.updateFollowed() }
+        buttonFollow.setOnClickListener {
+            viewModel.updateFollowed()
+            isChangeLikedFilmList = true
+        }
 
-        viewModel.error.observe(this) { Toast.makeText(this, it, Toast.LENGTH_LONG).show() }
+        viewModel.error.observe(this) { makeToastError(it, this) }
     }
 
     private fun setupViewModel() {
