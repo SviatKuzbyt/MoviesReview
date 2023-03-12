@@ -14,38 +14,8 @@
         app:title="@string/select_category"
         />
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/films"
-                android:textAppearance="@style/main_bold_text"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="16dp"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycleFilmsCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/serials"
-                android:textAppearance="@style/main_bold_text"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="8dp"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycleSerialsCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"/>
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="match_parent"
+        android:id="@+id/recycleCategories"/>
 </LinearLayout>

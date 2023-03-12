@@ -39,8 +39,6 @@ class CategoryAdapter(
         viewHolder.itemView.setOnClickListener {
             val intent = Intent(context, CategoryActivity::class.java)
             intent.putExtra("kind", dataSet[position].name)
-            intent.putExtra("type", dataSet[position].type)
-
             context.startActivity(intent)
         }
     }

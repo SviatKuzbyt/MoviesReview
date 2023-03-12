@@ -15,7 +15,6 @@ class CategoryActivity : AppCompatActivity() {
     private val categoryToolbar: androidx.appcompat.widget.Toolbar by lazy { findViewById(R.id.categoryToolbar) }
     private val categoryRecycler: RecyclerView by lazy { findViewById(R.id.categoryRecycler) }
     private val kind by lazy { intent.getStringExtra("kind") ?: "" }
-    private val type by lazy { intent.getStringExtra("type") ?: "" }
     private val viewModel by viewModels<CategoryViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +26,7 @@ class CategoryActivity : AppCompatActivity() {
     }
 
     private fun setRecycleView(){
-        viewModel.loadData(kind, type)
+        viewModel.loadData(kind)
         viewModel.list.observe(this){
             categoryRecycler.layoutManager = LinearLayoutManager(this)
             categoryRecycler.adapter = FilmListAdapter(it, this)

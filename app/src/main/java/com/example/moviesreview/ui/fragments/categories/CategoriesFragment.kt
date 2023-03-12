@@ -12,20 +12,14 @@ import com.example.moviesreview.data.elements.CategoryData
 import com.example.moviesreview.ui.elements.CategoryAdapter
 
 class CategoriesFragment : Fragment() {
-    private val listFilmCategory by lazy {listOf(
-        CategoryData("Comedy", R.drawable.comedy_ic, "film"),
-        CategoryData("Drama", R.drawable.drama_ic, "film"),
-        CategoryData("Sci-fi", R.drawable.scifi_ic, "film"),
-        CategoryData("Action", R.drawable.action_ic, "film"),
-        CategoryData("Detective", R.drawable.detective_ic, "film"),
-        CategoryData("Horror", R.drawable.horror_ic, "film")
-    )}
-
-    private val listSerialCategory by lazy {listOf(
-        CategoryData("Comedy", R.drawable.comedy_ic, "serial"),
-        CategoryData("Drama", R.drawable.drama_ic, "serial"),
-        CategoryData("Sci-fi", R.drawable.scifi_ic, "serial"),
-        CategoryData("Action", R.drawable.action_ic, "serial")
+    private val listCategory by lazy {listOf(
+        CategoryData("Comedy", R.drawable.comedy_ic),
+        CategoryData("Drama", R.drawable.drama_ic),
+        CategoryData("Sci-fi", R.drawable.scifi_ic),
+        CategoryData("Action", R.drawable.action_ic),
+        CategoryData("Crime", R.drawable.crime_ic),
+        CategoryData("Romance", R.drawable.romance_ic),
+        CategoryData("Thriller", R.drawable.thriller_ic)
     )}
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,12 +31,8 @@ class CategoriesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recycleFilmsCategory = view.findViewById<RecyclerView>(R.id.recycleFilmsCategory)
+        val recycleFilmsCategory = view.findViewById<RecyclerView>(R.id.recycleCategories)
         recycleFilmsCategory.layoutManager = LinearLayoutManager(activity)
-        recycleFilmsCategory.adapter = CategoryAdapter(listFilmCategory, requireActivity())
-
-        val recycleSerialsCategory = view.findViewById<RecyclerView>(R.id.recycleSerialsCategory)
-        recycleSerialsCategory.layoutManager = LinearLayoutManager(activity)
-        recycleSerialsCategory.adapter = CategoryAdapter(listSerialCategory, requireActivity())
+        recycleFilmsCategory.adapter = CategoryAdapter(listCategory, requireActivity())
     }
 }

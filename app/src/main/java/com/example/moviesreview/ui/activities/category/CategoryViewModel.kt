@@ -13,10 +13,10 @@ class CategoryViewModel(private val application: Application): AndroidViewModel(
     val list = MutableLiveData<List<ShortListItemData>>()
     val error = MutableLiveData<String>()
 
-    fun loadData(kind: String, type: String) = viewModelScope.launch(Dispatchers.IO){
+    fun loadData(kind: String) = viewModelScope.launch(Dispatchers.IO){
         try {
             list.postValue(
-                getListDataCategory(kind, type, application)
+                getListDataCategory(kind, application)
             )
         } catch (e: Exception){
             error.postValue(e.message)

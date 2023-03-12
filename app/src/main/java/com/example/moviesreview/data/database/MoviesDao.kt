@@ -21,8 +21,8 @@ interface MoviesDao {
     @Query("SELECT id, name, image, date, country, kind, type FROM Movies WHERE name LIKE :search")
     fun getListDataSearch(search: String): List<FullListItemData>
 
-    @Query("SELECT id, name, image, date, country, kind, type FROM Movies WHERE kind LIKE :kind AND type=:type")
-    fun getListDataCategory(kind: String, type: String): List<FullListItemData>
+    @Query("SELECT id, name, image, date, country, kind, type FROM Movies WHERE kind LIKE :kind")
+    fun getListDataCategory(kind: String): List<FullListItemData>
 
     @Query("SELECT id, name, image, date, country, kind, type FROM Movies WHERE followed=1")
     fun getLikedFilms(): List<FullListItemData>
