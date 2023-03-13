@@ -23,14 +23,6 @@ internal class MoviesDataBaseTest{
     }
 
     @Test
-    fun checkGetOtherFilms(){
-        val records = dao.getListData(false)
-        Assert.assertNotEquals(records, emptyList<Movies>())
-        println("RESULT: $records")
-    }
-
-
-    @Test
     fun checkGetInformation(){
         val record = dao.getInformation(2)
         println("RESULT: $record")

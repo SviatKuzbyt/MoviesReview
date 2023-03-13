@@ -15,22 +15,22 @@ class HomeViewModel(application: Application): AndroidViewModel(application) {
     val error = MutableLiveData<String>()
     private val repository = HomeRepository(application)
 
-    init {
-        viewModelScope.launch(Dispatchers.IO){
-            try {
-                loadTopFilmList()
-                loadOtherFilmList()
-            } catch (e: Exception){
-                error.postValue("Error: ${e.message}")
-            }
-        }
-    }
-
-    private fun loadTopFilmList(){
-        topFilmList.postValue(repository.getFilms(true))
-    }
-
-    private fun loadOtherFilmList(){
-        otherFilmList.postValue(repository.getFilms(false))
-    }
+//    init {
+//        viewModelScope.launch(Dispatchers.IO){
+//            try {
+//                loadTopFilmList()
+//                loadOtherFilmList()
+//            } catch (e: Exception){
+//                error.postValue("Error: ${e.message}")
+//            }
+//        }
+//    }
+//
+//    private fun loadTopFilmList(){
+//        topFilmList.postValue(repository.getFilms(true))
+//    }
+//
+//    private fun loadOtherFilmList(){
+//        otherFilmList.postValue(repository.getFilms(false))
+//    }
 }

@@ -1,6 +1,7 @@
 package com.example.moviesreview.data.repositories
 
 import androidx.test.platform.app.InstrumentationRegistry
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
@@ -13,14 +14,10 @@ internal class HomeRepositoryTest{
     }
 
     @Test
-    fun getTopFilms(){
-        val list = homeRepository.getFilms(true)
-        println("Result: $list")
+    fun checkGetHomeList(){
+        val list = homeRepository.getData()
+        Assert.assertNotEquals(list, emptyList<HomeListData>())
+        println("RESULT: $list")
     }
 
-    @Test
-    fun getOtherList(){
-        val list = homeRepository.getFilms(false)
-        println("Result: $list")
-    }
 }

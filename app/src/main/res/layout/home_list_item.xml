@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/homeListDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:textAppearance="@style/main_bold_text"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homeListRecycle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"
+        />
+
+    <TextView
+        android:id="@+id/homeListMore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/more"
+        android:textAppearance="@style/main_text"
+        android:textColor="?colorSecondary"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>

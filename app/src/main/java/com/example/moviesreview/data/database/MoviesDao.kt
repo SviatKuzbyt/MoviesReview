@@ -9,8 +9,16 @@ interface MoviesDao {
     @Query("SELECT * FROM Movies")
     fun getData(): List<Movies>
 
-    @Query("SELECT id, name, image, date, country, kind, type FROM Movies WHERE isTop=:isTop")
-    fun getListData(isTop: Boolean): List<FullListItemData>
+    @Query("SELECT id, name, image, date, country, kind, type FROM Movies WHERE isTop=1 LIMIT 3")
+    fun getTopLimitList(): List<FullListItemData>
+
+    @Query("SELECT id, name, image, date, country, kind, type FROM Movies WHERE isTop=1")
+    fun getTopList(): List<FullListItemData>
+    @Query("SELECT id, name, image, date, country, kind, type FROM Movies WHERE type=:type LIMIT 3")
+    fun getTypeLimitList(type: String): List<FullListItemData>
+
+    @Query("SELECT id, name, image, date, country, kind, type FROM Movies WHERE type=:type")
+    fun getTypeList(type: String): List<FullListItemData>
 
     @Query("SELECT * FROM Movies WHERE id=:id LIMIT 1")
     fun getInformation(id: Int): Movies
