@@ -49,38 +49,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homeRecycle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/recycle_description"
-                android:text="@string/top"
-                android:layout_marginStart="16dp"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/topFilmsRecycle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:layout_marginTop="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/recycle_description"
-                android:text="@string/other"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/otherFilmsRecycle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:layout_marginTop="8dp" />
-        </LinearLayout>
+            android:nestedScrollingEnabled="false"/>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
