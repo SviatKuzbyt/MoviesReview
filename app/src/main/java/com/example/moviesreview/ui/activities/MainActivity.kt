@@ -5,14 +5,14 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.moviesreview.R
-import com.example.moviesreview.data.elements.ConvertList
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-var isChangeLikedFilmList = false
+var isChangeLikedFilmList = true
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         val mainBottomNavigation = findViewById<BottomNavigationView>(R.id.mainBottomNavigation)
         val navController = findNavController(R.id.mainFrameLayout)

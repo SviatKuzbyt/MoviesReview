@@ -4,13 +4,13 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.moviesreview.data.elements.ShortListItemData
+import com.example.moviesreview.data.elements.ShortListData
 import com.example.moviesreview.data.repositories.SearchRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class SearchViewModel(application: Application): AndroidViewModel(application) {
-    val list = MutableLiveData<List<ShortListItemData>>()
+    val list = MutableLiveData<List<ShortListData>>()
     val error = MutableLiveData<String>()
     private val repository = SearchRepository(application)
 

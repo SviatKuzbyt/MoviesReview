@@ -2,21 +2,25 @@ package com.example.moviesreview.data.repositories
 
 import android.content.Context
 import com.example.moviesreview.data.database.MoviesDataBase
-import com.example.moviesreview.data.elements.ConvertList
-import com.example.moviesreview.data.elements.ShortListItemData
+import com.example.moviesreview.data.elements.ShortListData
+import com.example.moviesreview.data.elements.getShortListData
 
-class SearchRepository(context: Context) {
+class SearchRepository(private val context: Context) {
     private val dao = MoviesDataBase.getInstance(context).dao()
-    private val convertList = ConvertList(context)
 
-    fun getResults(searchName: String): List<ShortListItemData>{
-        val text = searchName.trim()
-        if (text.isEmpty())
-            return emptyList()
+    fun getResults(text: String): List<ShortListData>{
+        val textTrim = text.trim()
 
+        return if (textTrim.isEmpty())
+            emptyList()
+        else
+            loadData(textTrim)
+    }
+
+    private fun loadData(text: String): List<ShortListData>{
         val list = dao.getListDataSearch("%${text}%")
         return if (list.isNotEmpty())
-            convertList.getShortListItemData(list)
+            getShortListData(list, context)
         else
             emptyList()
     }

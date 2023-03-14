@@ -1,7 +1,7 @@
 package com.example.moviesreview.data.repositories
 
 import androidx.test.platform.app.InstrumentationRegistry
-import com.example.moviesreview.data.elements.ShortListItemData
+import com.example.moviesreview.data.elements.ShortListData
 import org.junit.Assert
 import org.junit.Test
 
@@ -12,7 +12,7 @@ internal class SearchRepositoryTest{
         val searchRepository = SearchRepository(appContext)
         val list = searchRepository.getResults("an")
 
-        Assert.assertNotEquals(list, emptyList<ShortListItemData>())
+        Assert.assertNotEquals(list, emptyList<ShortListData>())
         println("RESULT: $list")
     }
 }

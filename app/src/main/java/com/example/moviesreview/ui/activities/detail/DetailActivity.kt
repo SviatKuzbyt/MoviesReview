@@ -22,7 +22,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviesreview.R
 import com.example.moviesreview.ui.activities.isChangeLikedFilmList
-import com.example.moviesreview.ui.elements.MainInformationAdapter
+import com.example.moviesreview.ui.elements.adapters.MainInformationAdapter
 import com.example.moviesreview.ui.elements.makeToastError
 import jp.wasabeef.glide.transformations.BlurTransformation
 

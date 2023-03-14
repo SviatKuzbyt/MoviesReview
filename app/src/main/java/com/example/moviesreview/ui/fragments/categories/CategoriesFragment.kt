@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
 import com.example.moviesreview.data.elements.CategoryData
-import com.example.moviesreview.ui.elements.CategoryAdapter
+import com.example.moviesreview.ui.elements.adapters.CategoryAdapter
 
 class CategoriesFragment : Fragment() {
     private val listCategory by lazy {listOf(

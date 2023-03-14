@@ -12,7 +12,7 @@
         android:theme="@style/Theme.MoviesReview"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activities.category.CategoryActivity"
+            android:name=".ui.activities.category.MoreListActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.search.SearchActivity"

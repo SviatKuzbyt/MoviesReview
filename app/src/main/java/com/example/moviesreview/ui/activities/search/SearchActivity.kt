@@ -8,14 +8,13 @@ import android.view.View
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
 import com.example.moviesreview.ui.elements.SearchEditText
-import com.example.moviesreview.ui.elements.FilmListAdapter
+import com.example.moviesreview.ui.elements.adapters.FilmListAdapter
 import com.example.moviesreview.ui.elements.makeToastError
 
 class SearchActivity : AppCompatActivity() {

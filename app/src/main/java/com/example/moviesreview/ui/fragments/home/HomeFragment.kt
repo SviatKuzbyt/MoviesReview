@@ -8,16 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
-import com.example.moviesreview.data.elements.ShortListItemData
-import com.example.moviesreview.ui.elements.FilmListAdapter
 import com.example.moviesreview.ui.activities.search.SearchActivity
-import com.example.moviesreview.ui.elements.HomeListAdapter
+import com.example.moviesreview.ui.elements.adapters.HomeListAdapter
 import com.example.moviesreview.ui.elements.makeToastError
 
 class HomeFragment : Fragment() {

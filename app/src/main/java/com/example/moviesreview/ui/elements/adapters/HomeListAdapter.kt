@@ -1,6 +1,7 @@
-package com.example.moviesreview.ui.elements
+package com.example.moviesreview.ui.elements.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
 import com.example.moviesreview.data.repositories.HomeListData
+import com.example.moviesreview.ui.activities.category.MoreListActivity
 
 class HomeListAdapter(
     private val dataSet: List<HomeListData>,
@@ -38,6 +40,12 @@ class HomeListAdapter(
 
         viewHolder.recycle.layoutManager = LinearLayoutManager(context)
         viewHolder.recycle.adapter = FilmListAdapter(dataSet[position].list, context)
+
+        viewHolder.moreText.setOnClickListener {
+            val intent = Intent(context, MoreListActivity::class.java)
+            intent.putExtra("mode", dataSet[position].openMode)
+            context.startActivity(intent)
+        }
     }
     override fun getItemCount() = dataSet.size
 }

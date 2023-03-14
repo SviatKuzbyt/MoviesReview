@@ -1,4 +1,4 @@
-package com.example.moviesreview.ui.elements
+package com.example.moviesreview.ui.elements.adapters
 
 import android.app.Activity
 import android.app.ActivityOptions
@@ -12,10 +12,10 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
-import com.example.moviesreview.data.elements.ShortListItemData
+import com.example.moviesreview.data.elements.ShortListData
 import com.example.moviesreview.ui.activities.detail.DetailActivity
 
-class FilmListAdapter(private var dataSet: List<ShortListItemData>, private val context: Context) :
+class FilmListAdapter(private var dataSet: List<ShortListData>, private val context: Context) :
     RecyclerView.Adapter<FilmListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -44,7 +44,7 @@ class FilmListAdapter(private var dataSet: List<ShortListItemData>, private val 
         viewHolder.listDescription.text = dataSet[position].name
         viewHolder.listDetailText.text = dataSet[position].details
         viewHolder.listTypeFilm.text = dataSet[position].type
-        viewHolder.listImage.setImageDrawable(dataSet[position].image)
+        viewHolder.listImage.setImageBitmap(dataSet[position].image)
 
         //opening DetailActivity with animation and sending film id
         viewHolder.itemView.setOnClickListener {
@@ -59,7 +59,7 @@ class FilmListAdapter(private var dataSet: List<ShortListItemData>, private val 
     }
     override fun getItemCount() = dataSet.size
 
-    fun updateData(newData: List<ShortListItemData>) {
+    fun updateData(newData: List<ShortListData>) {
         notifyItemRangeRemoved(0, itemCount)
         dataSet = newData
         notifyItemRangeInserted(0, itemCount)
