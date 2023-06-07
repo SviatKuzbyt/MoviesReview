@@ -6,17 +6,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.moviesreview.data.repositories.HomeListData
 import com.example.moviesreview.data.repositories.HomeRepository
+import com.example.moviesreview.ui.elements.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HomeViewModel(application: Application): AndroidViewModel(application) {
     val homeList = MutableLiveData<List<HomeListData>>()
-    val error = MutableLiveData<String>()
+    val error = SingleLiveEvent<String>()
     private val repository = HomeRepository(application)
 
-    init {
-        loadData()
-    }
+    init { loadData() }
 
     private fun loadData() = viewModelScope.launch(Dispatchers.IO){
         try {

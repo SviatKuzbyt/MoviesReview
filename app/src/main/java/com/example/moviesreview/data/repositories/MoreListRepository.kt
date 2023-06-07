@@ -5,10 +5,10 @@ import com.example.moviesreview.data.database.MoviesDataBase
 import com.example.moviesreview.data.elements.ShortListData
 import com.example.moviesreview.data.elements.getShortListData
 
-val OPEN_TOP = 1
-val OPEN_FILMS = 2
-val OPEN_SERIALS = 3
-val OPEN_CATEGORITY = 4
+const val OPEN_TOP = 1
+const val OPEN_FILMS = 2
+const val OPEN_SERIALS = 3
+const val OPEN_CATEGORY = 4
 
 class MoreListRepository(private val context: Context) {
     private val dao = MoviesDataBase.getInstance(context).dao()

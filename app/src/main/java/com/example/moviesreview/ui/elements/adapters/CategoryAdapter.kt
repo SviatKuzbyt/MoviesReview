@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesreview.R
 import com.example.moviesreview.data.elements.CategoryData
-import com.example.moviesreview.data.repositories.OPEN_CATEGORITY
+import com.example.moviesreview.data.repositories.OPEN_CATEGORY
 import com.example.moviesreview.ui.activities.category.MoreListActivity
 
 class CategoryAdapter(
@@ -19,12 +19,8 @@ class CategoryAdapter(
     RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val categoryText: TextView
-        val categoryIcon: View
-        init {
-            categoryText = view.findViewById(R.id.categoryText)
-            categoryIcon = view.findViewById(R.id.categoryIcon)
-        }
+        val categoryText: TextView = view.findViewById(R.id.categoryText)
+        val categoryIcon: View = view.findViewById(R.id.categoryIcon)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -39,7 +35,7 @@ class CategoryAdapter(
 
         viewHolder.itemView.setOnClickListener {
             val intent = Intent(context, MoreListActivity::class.java)
-            intent.putExtra("mode", OPEN_CATEGORITY)
+            intent.putExtra("mode", OPEN_CATEGORY)
             intent.putExtra("kind", dataSet[position].name)
             context.startActivity(intent)
         }

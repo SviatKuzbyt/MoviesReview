@@ -12,12 +12,8 @@ class MainInformationAdapter(private val dataSet: List<MainInformation>) :
     RecyclerView.Adapter<MainInformationAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val informationLabelText: TextView
-        val informationContentText: TextView
-        init {
-            informationLabelText = view.findViewById(R.id.informationLabelText)
-            informationContentText = view.findViewById(R.id.informationContentText)
-        }
+        val informationLabelText: TextView = view.findViewById(R.id.informationLabelText)
+        val informationContentText: TextView = view.findViewById(R.id.informationContentText)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -30,5 +26,6 @@ class MainInformationAdapter(private val dataSet: List<MainInformation>) :
         viewHolder.informationLabelText.text = dataSet[position].label
         viewHolder.informationContentText.text = dataSet[position].information
     }
+
     override fun getItemCount() = dataSet.size
 }

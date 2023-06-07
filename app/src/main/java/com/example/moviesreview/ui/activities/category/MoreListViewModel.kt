@@ -6,12 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.moviesreview.data.elements.ShortListData
 import com.example.moviesreview.data.repositories.MoreListRepository
+import com.example.moviesreview.ui.elements.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MoreListViewModel(application: Application): AndroidViewModel(application) {
     val list = MutableLiveData<List<ShortListData>>()
-    val error = MutableLiveData<String>()
+    val error = SingleLiveEvent<String>()
     private val repository = MoreListRepository(application)
 
     fun loadData(mode: Int, kind: String?) = viewModelScope.launch(Dispatchers.IO){

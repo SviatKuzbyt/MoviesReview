@@ -6,6 +6,7 @@ import androidx.lifecycle.*
 import com.example.moviesreview.data.repositories.DetailData
 import com.example.moviesreview.data.repositories.DetailRepository
 import com.example.moviesreview.data.repositories.MainInformation
+import com.example.moviesreview.ui.elements.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -17,7 +18,7 @@ class DetailViewModel(application: Application, id: Int): ViewModel()   {
     val isFollowed = MutableLiveData<Boolean>()
     val mainInformation = MutableLiveData<List<MainInformation>>()
     val description = MutableLiveData<String>()
-    val error = MutableLiveData<String>()
+    val error = SingleLiveEvent<String>()
     val isToolbarVisible = MutableLiveData<Boolean>()
 
     private var repository = DetailRepository(id, application)

@@ -2,9 +2,7 @@ package com.example.moviesreview.ui.fragments.liked
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,17 +11,10 @@ import com.example.moviesreview.ui.activities.isChangeLikedFilmList
 import com.example.moviesreview.ui.elements.adapters.FilmListAdapter
 import com.example.moviesreview.ui.elements.makeToastError
 
-class LikedFragment : Fragment() {
+class LikedFragment : Fragment(R.layout.fragment_liked) {
 
     private val viewModel by viewModels<LikedViewModel>()
-    lateinit var filmListAdapter: FilmListAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_liked, container, false)
-    }
+    private lateinit var filmListAdapter: FilmListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

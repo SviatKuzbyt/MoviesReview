@@ -15,18 +15,12 @@ import com.example.moviesreview.ui.activities.category.MoreListActivity
 class HomeListAdapter(
     private val dataSet: List<HomeListData>,
     private val context: Context,
-):
-    RecyclerView.Adapter<HomeListAdapter.ViewHolder>() {
+): RecyclerView.Adapter<HomeListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val description: TextView
-        val recycle: RecyclerView
-        val moreText: TextView
-        init {
-            description = view.findViewById(R.id.homeListDescription)
-            recycle = view.findViewById(R.id.homeListRecycle)
-            moreText = view.findViewById(R.id.homeListMore)
-        }
+        val description: TextView = view.findViewById(R.id.homeListDescription)
+        val recycle: RecyclerView = view.findViewById(R.id.homeListRecycle)
+        val moreText: TextView = view.findViewById(R.id.homeListMore)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {

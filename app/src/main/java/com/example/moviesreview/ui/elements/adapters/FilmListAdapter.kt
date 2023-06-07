@@ -19,18 +19,11 @@ class FilmListAdapter(private var dataSet: List<ShortListData>, private val cont
     RecyclerView.Adapter<FilmListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val listDescription: TextView
-        val listDetailText: TextView
-        val listTypeFilm: TextView
-        val listImage: ImageView
-        val listCardView: CardView
-        init {
-            listDescription = view.findViewById(R.id.listDescription)
-            listDetailText = view.findViewById(R.id.listDetailText)
-            listTypeFilm = view.findViewById(R.id.listTypeFilm)
-            listImage = view.findViewById(R.id.listImage)
-            listCardView = view.findViewById(R.id.listCardView)
-        }
+        val listDescription: TextView = view.findViewById(R.id.listDescription)
+        val listDetailText: TextView = view.findViewById(R.id.listDetailText)
+        val listTypeFilm: TextView = view.findViewById(R.id.listTypeFilm)
+        val listImage: ImageView = view.findViewById(R.id.listImage)
+        val listCardView: CardView = view.findViewById(R.id.listCardView)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
